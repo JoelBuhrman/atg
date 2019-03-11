@@ -16,6 +16,7 @@ const StyledInput = styled.input`
 const Input = ({ fetchGames }) => (
   <Container>
     <StyledInput
+      id='input'
       type='search'
       placeholder='Enter one of game types V75, V65, V64, V4'
     />

@@ -1,20 +1,48 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from '@emotion/styled'
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const ListItem = styled.li`
+  display: flex;
+  flex-direction: row;
+`
+
+const ListColumn = styled.div`
+  flex: 1;
+  color: #fff;
+`
+
+const StyledUL = styled.ul`
+  padding-left: 0px;
+`
+
+const Heading = styled.h3`
+  color: #fff;
+`
 
 const Header = () => (
-  <div className='flex-box'>
-    <h3>Race number</h3>
-    <h3>Race name</h3>
-    <h3>Race start time</h3>
-  </div>
+  <Container>
+    <Heading>Race number</Heading>
+    <Heading>Race name</Heading>
+    <Heading>Race start time</Heading>
+  </Container>
 )
 
 const Table = ({ gameInformation }) => (
-  <ul>
+  <StyledUL>
     {gameInformation.map(game => (
-      <li key={game}>{game}</li>
+      <ListItem key={game.id}>
+        <ListColumn>{game.number}</ListColumn>
+        <ListColumn>{game.name}</ListColumn>
+        <ListColumn>{game.startTime}</ListColumn>
+      </ListItem>
     ))}
-  </ul>
+  </StyledUL>
 )
 
 const GameInformation = ({ gameInformation }) => (
@@ -25,11 +53,11 @@ const GameInformation = ({ gameInformation }) => (
 )
 
 Table.propTypes = {
-  gameInformation: PropTypes.arrayOf(PropTypes.string).isRequired
+  gameInformation: PropTypes.object.isRequired
 }
 
 GameInformation.propTypes = {
-  gameInformation: PropTypes.arrayOf(PropTypes.string).isRequired
+  gameInformation: PropTypes.object.isRequired
 }
 
 export default GameInformation

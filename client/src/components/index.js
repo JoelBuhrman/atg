@@ -1,3 +1,4 @@
 import Input from './Input'
+import GameInformation from './GameInformation'
 
-export default Input
+export { Input, GameInformation }

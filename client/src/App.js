@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Input from './components'
+import { Input, GameInformation } from './components'
 import { getGames } from './api'
 
 const Container = styled.div`
@@ -15,12 +15,16 @@ class App extends React.Component {
     }
   }
 
-  fetchGames = async gameType => this.setState({ games: await getGames('V75') })
+  fetchGames = async () => {
+    const inputValue = document.getElementById('input').value
+    this.setState({ games: await getGames(inputValue) })
+  }
 
   render() {
     return (
       <Container>
         <Input fetchGames={this.fetchGames} />
+        <GameInformation gameInformation={this.state.games} />
       </Container>
     )
   }
