@@ -15,6 +15,8 @@ const getData = async object => {
 }
 
 export const getGames = gameType =>
-  fetch('/getGames/' + gameType)
-    .then(response => response)
-    .then(async data => await getData(data.json()))
+  ALLOWED_INPUTS.includes(gameType)
+    ? fetch('/getGames/' + gameType)
+        .then(response => response)
+        .then(async data => await getData(data.json()))
+    : []
