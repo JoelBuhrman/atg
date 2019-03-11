@@ -20,7 +20,7 @@ const StyledInput = styled.input`
   padding: 12px 16px;
   border-radius: 2px;
   border-color: rgb(187, 203, 222);
-  font-size: 16px;
+  font-size: 14px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 2px 0px inset;
 `
 

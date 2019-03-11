@@ -11,7 +11,7 @@ const Container = styled.div`
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
-  font-size: 16px;
+  font-size: 14px;
 `
 
 const Heading = styled.h3`
@@ -36,7 +36,7 @@ const GameInformation = ({ gameInformation }) => (
 )
 
 GameInformation.propTypes = {
-  gameInformation: PropTypes.object.isRequired
+  gameInformation: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default GameInformation

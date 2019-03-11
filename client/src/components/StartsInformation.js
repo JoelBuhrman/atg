@@ -81,7 +81,7 @@ export default class StartsInformation extends React.Component {
       <StyledUL>
         <Header />
         {starts.map(start => (
-          <Fragment>
+          <Fragment key={start.horse.name}>
             <FlexBox onClick={() => this.toggleExpand(start.number)}>
               <FlexItem>{start.number}</FlexItem>
               <FlexItem>{start.horse.name}</FlexItem>

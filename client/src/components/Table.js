@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from '@emotion/styled'
 import StartsInformation from './StartsInformation'
 import { formatDate, formatName } from '../utils'
@@ -59,7 +59,7 @@ export default class Table extends React.Component {
     return (
       <StyledUL>
         {gameInformation.map(game => (
-          <div>
+          <Fragment key={game.id}>
             <ListItem key={game.id} onClick={() => this.toggleExpand(game.id)}>
               <ListColumn>
                 <Number>{game.number}</Number>
@@ -70,7 +70,7 @@ export default class Table extends React.Component {
             {this.isExpanded(game.id) && (
               <StartsInformation starts={game.starts} />
             )}
-          </div>
+          </Fragment>
         ))}
       </StyledUL>
     )
