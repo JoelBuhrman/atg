@@ -11,6 +11,7 @@ const ListItem = styled.li`
   font-weight: bold;
   border-top: 1px solid rgb(233, 233, 233);
   cursor: pointer;
+  align-items: center;
 `
 
 const ListColumn = styled.div`
@@ -33,6 +34,7 @@ const StyledUL = styled.ul`
   padding-left: 0px;
   background: #fff;
   padding: 10px;
+  font-size: 12px;
 `
 
 export default class Table extends React.Component {
