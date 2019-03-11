@@ -1,25 +1,38 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import StartsInformation from './StartsInformation'
+import { formatDate, formatName } from '../utils'
 
 const ListItem = styled.li`
   display: flex;
   flex-direction: row;
-  font-size: 10px;
   padding: 5px 0px;
-  background: #fff;
   color: #004da1;
   font-weight: bold;
-  border-bottom: 1px solid #aaa;
+  border-top: 1px solid rgb(233, 233, 233);
   cursor: pointer;
 `
 
 const ListColumn = styled.div`
   flex: 1;
 `
-
+const Number = styled.div`
+  background: red;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(
+    rgb(255, 255, 255) 0%,
+    rgb(219, 228, 239) 100%
+  );
+  align-items: center;
+`
 const StyledUL = styled.ul`
   padding-left: 0px;
+  background: #fff;
+  padding: 10px;
 `
 
 export default class Table extends React.Component {
@@ -46,9 +59,11 @@ export default class Table extends React.Component {
         {gameInformation.map(game => (
           <div onClick={() => this.toggleExpand(game.id)}>
             <ListItem key={game.id}>
-              <ListColumn>{game.number}</ListColumn>
-              <ListColumn>{game.name}</ListColumn>
-              <ListColumn>{game.startTime}</ListColumn>
+              <ListColumn>
+                <Number>{game.number}</Number>
+              </ListColumn>
+              <ListColumn>{formatName(game.name)}</ListColumn>
+              <ListColumn>{formatDate(game.startTime)}</ListColumn>
             </ListItem>
             {this.isExpanded(game.id) && (
               <StartsInformation starts={game.starts} />
