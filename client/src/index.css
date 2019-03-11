@@ -10,12 +10,11 @@ body {
   max-width: 500px;
 }
 
-.flex-box {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+input[type='search'] {
+  border: 1px solid #ddd;
+  outline: none;
 }
-
-h3 {
-  flex: 1;
+input[type='submit'] {
+  border: 1px solid #ddd;
+  outline: none;
 }
