@@ -1,4 +1,4 @@
 import Input from './Input'
-import GameInformation from './GameInformation'
+import Table from './Table'
 
-export { Input, GameInformation }
+export { Input, Table }

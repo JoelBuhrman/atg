@@ -1,10 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from '@emotion/styled'
 
-const StyledUL = styled.div`
-  margin: 0px;
-`
-
 const FlexBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -14,47 +10,40 @@ const FlexBox = styled.div`
 const FlexItem = styled.div`
   flex: 1;
   color: gray;
-`
-const FlexItemBox = styled.div`
-  flex: 1;
-  color: gray;
-  display: flex;
-  flex-direction: row;
+  padding: 0px 5px;
 `
 
-const FlexItemSmall = styled.div`
-  flex: 1;
+const ExpandedItem = styled.div`
   color: gray;
-  text-align: right;
   font-weight: bold;
   font-size: 10px;
+  margin-left: 34%;
 `
 
-const Divider = styled.div`
-  border-bottom: 1px solid rgb(233, 233, 233);
-  width: 100%;
+const Number = styled.div`
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(
+    rgb(255, 255, 255) 0%,
+    rgb(219, 228, 239) 100%
+  );
+  align-items: center;
+  color: #004da1;
+  font-weight: bold;
 `
 
-const B = styled.b`
-  color: black;
+const ListItem = styled.li`
+  padding: 5px;
 `
 
-const Header = () => (
-  <Fragment>
-    <FlexBox>
-      <FlexItem>
-        <B>StartNumber</B>
-      </FlexItem>
-      <FlexItem>
-        <B>Horse</B>
-      </FlexItem>
-      <FlexItem>
-        <B>Driver</B>
-      </FlexItem>
-    </FlexBox>
-    <Divider />
-  </Fragment>
-)
+const Container = styled.div`
+  background: #fff;
+  margin: 10px;
+  border: 1px solid gray;
+`
 
 export default class StartsInformation extends React.Component {
   constructor(props) {
@@ -78,33 +67,33 @@ export default class StartsInformation extends React.Component {
   render() {
     const { starts } = this.props
     return (
-      <StyledUL>
-        <Header />
-        {starts.map(start => (
-          <Fragment key={start.horse.name}>
-            <FlexBox onClick={() => this.toggleExpand(start.number)}>
-              <FlexItem>{start.number}</FlexItem>
-              <FlexItem>{start.horse.name}</FlexItem>
-              <FlexItem>
-                {start.driver.firstName} {start.driver.lastName}
-              </FlexItem>
-            </FlexBox>
-            {this.isExpanded(start.number) && (
-              <FlexBox>
-                <FlexItemSmall>Trainer: </FlexItemSmall>
-                <FlexItemBox>
+      <Container>
+        <ul>
+          {starts.map((start, index) => (
+            <ListItem>
+              <Fragment key={start.horse.name}>
+                <FlexBox onClick={() => this.toggleExpand(start.number)}>
                   <FlexItem>
-                    {start.horse.trainer.firstName}{' '}
-                    {start.horse.trainer.lastName}
+                    <Number>{start.number}</Number>
                   </FlexItem>
-                  <FlexItemSmall>Father: </FlexItemSmall>
-                </FlexItemBox>
-                <FlexItem>{start.horse.pedigree.father.name}</FlexItem>
-              </FlexBox>
-            )}
-          </Fragment>
-        ))}
-      </StyledUL>
+                  <FlexItem>{start.horse.name}</FlexItem>
+                  <FlexItem>
+                    {start.driver.firstName} {start.driver.lastName}
+                  </FlexItem>
+                </FlexBox>
+                {this.isExpanded(start.number) && (
+                  <ExpandedItem>
+                    Trainer:
+                    {start.horse.trainer.firstName}{' '}
+                    {start.horse.trainer.lastName}, Father:
+                    {start.horse.pedigree.father.name}
+                  </ExpandedItem>
+                )}
+              </Fragment>
+            </ListItem>
+          ))}
+        </ul>
+      </Container>
     )
   }
 }
