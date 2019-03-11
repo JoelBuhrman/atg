@@ -1,5 +1,60 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from '@emotion/styled'
+
+const StyledUL = styled.div`
+  margin: 0px;
+`
+
+const FlexBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+`
+
+const FlexItem = styled.div`
+  flex: 1;
+  color: gray;
+`
+const FlexItemBox = styled.div`
+  flex: 1;
+  color: gray;
+  display: flex;
+  flex-direction: row;
+`
+
+const FlexItemSmall = styled.div`
+  flex: 1;
+  color: gray;
+  text-align: right;
+  font-weight: bold;
+  font-size: 10px;
+`
+
+const Divider = styled.div`
+  border-bottom: 1px solid rgb(233, 233, 233);
+  width: 100%;
+`
+
+const B = styled.b`
+  color: black;
+`
+
+const Header = () => (
+  <Fragment>
+    <FlexBox>
+      <FlexItem>
+        <B>StartNumber</B>
+      </FlexItem>
+      <FlexItem>
+        <B>Horse</B>
+      </FlexItem>
+      <FlexItem>
+        <B>Driver</B>
+      </FlexItem>
+    </FlexBox>
+    <Divider />
+  </Fragment>
+)
 
 export default class StartsInformation extends React.Component {
   constructor(props) {
@@ -23,25 +78,33 @@ export default class StartsInformation extends React.Component {
   render() {
     const { starts } = this.props
     return (
-      <ul>
+      <StyledUL>
+        <Header />
         {starts.map(start => (
-          <li onClick={() => this.toggleExpand(start.number)}>
-            <div>{start.number}</div>
-            <div>{start.horse.name}</div>
-            <div>
-              {start.driver.firstName}
-              {start.driver.lastName}
-            </div>
+          <Fragment>
+            <FlexBox onClick={() => this.toggleExpand(start.number)}>
+              <FlexItem>{start.number}</FlexItem>
+              <FlexItem>{start.horse.name}</FlexItem>
+              <FlexItem>
+                {start.driver.firstName} {start.driver.lastName}
+              </FlexItem>
+            </FlexBox>
             {this.isExpanded(start.number) && (
-              <div>
-                {start.horse.trainer.firstName}
-                {start.horse.trainer.lastName}
-                {start.horse.pedigree.father.name}
-              </div>
+              <FlexBox>
+                <FlexItemSmall>Name: </FlexItemSmall>
+                <FlexItemBox>
+                  <FlexItem>
+                    {start.horse.trainer.firstName}{' '}
+                    {start.horse.trainer.lastName}
+                  </FlexItem>
+                  <FlexItemSmall>Father: </FlexItemSmall>
+                </FlexItemBox>
+                <FlexItem>{start.horse.pedigree.father.name}</FlexItem>
+              </FlexBox>
             )}
-          </li>
+          </Fragment>
         ))}
-      </ul>
+      </StyledUL>
     )
   }
 }
