@@ -1,4 +1,4 @@
-const { formatDate } = require('./formatDate')
+import { formatDate } from './formatDate'
 
 describe('formatDate', () => {
   const input = '2019-03-16T16:20:00'

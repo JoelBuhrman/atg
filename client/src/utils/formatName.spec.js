@@ -1,4 +1,4 @@
-const { formatName } = require('./formatName')
+import { formatName } from './formatName'
 
 const testCases = [
   {
