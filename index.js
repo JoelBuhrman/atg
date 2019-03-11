@@ -26,7 +26,7 @@ app.get('/getGames/:gameType', (req, res) => {
     })
 })
 
-app.get('getGameData/:gameId', (req, res) => {
+app.get('/getGameData/:gameId', (req, res) => {
   const { gameId } = req.params
   https
     .get(
