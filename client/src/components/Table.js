@@ -57,8 +57,8 @@ export default class Table extends React.Component {
     return (
       <StyledUL>
         {gameInformation.map(game => (
-          <div onClick={() => this.toggleExpand(game.id)}>
-            <ListItem key={game.id}>
+          <div>
+            <ListItem key={game.id} onClick={() => this.toggleExpand(game.id)}>
               <ListColumn>
                 <Number>{game.number}</Number>
               </ListColumn>
