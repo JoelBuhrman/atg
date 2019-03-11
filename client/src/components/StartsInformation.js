@@ -91,7 +91,7 @@ export default class StartsInformation extends React.Component {
             </FlexBox>
             {this.isExpanded(start.number) && (
               <FlexBox>
-                <FlexItemSmall>Name: </FlexItemSmall>
+                <FlexItemSmall>Trainer: </FlexItemSmall>
                 <FlexItemBox>
                   <FlexItem>
                     {start.horse.trainer.firstName}{' '}
