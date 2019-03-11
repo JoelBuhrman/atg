@@ -13,6 +13,10 @@ const testCases = [
     input:
       'STL Gulddivisionen, Försök 6 i Meeting 2 (Final Solvalla 30 mars 2019)',
     expectedOutput: 'STL Gulddivisionen'
+  },
+  {
+    input: undefined,
+    expectedOutput: ''
   }
 ]
 
