@@ -30,8 +30,8 @@ const Container = styled.div`
 export default ({ gameInformation, gameType }) =>
   gameInformation.map(game => (
     <Container key={game.id}>
-      <Header key={game.id}>{gameType}</Header>
-      <RaceInfo key={game.id}>
+      <Header>{gameType}</Header>
+      <RaceInfo>
         RACE {game.number}, {formatName(game.name)},{' '}
         {formatDate(game.startTime)}
       </RaceInfo>

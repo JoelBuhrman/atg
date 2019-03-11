@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { Input, Table } from './components'
+import { Input, GamesInformation } from './components'
 import { getGames } from './api'
 
 const Container = styled.div`
@@ -30,7 +30,7 @@ class App extends React.Component {
         <Logo src='https://omatg.se/wp-content/uploads/2019/01/ATG_primary.png' />
         <Input fetchGames={this.fetchGames} />
         {this.state.games && (
-          <Table
+          <GamesInformation
             gameInformation={this.state.games}
             gameType={this.state.type}
           />

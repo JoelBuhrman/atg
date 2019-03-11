@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 const FlexBox = styled.div`
   display: flex;
   flex-direction: row;
-  cursor: pointer;
 `
 
 const FlexItem = styled.div`
@@ -37,6 +36,7 @@ const Number = styled.div`
 
 const ListItem = styled.li`
   padding: 5px;
+  cursor: pointer;
 `
 
 const Container = styled.div`
@@ -70,7 +70,7 @@ export default class StartsInformation extends React.Component {
       <Container>
         <ul>
           {starts.map((start, index) => (
-            <ListItem>
+            <ListItem key={start.horse.name}>
               <Fragment key={start.horse.name}>
                 <FlexBox onClick={() => this.toggleExpand(start.number)}>
                   <FlexItem>
