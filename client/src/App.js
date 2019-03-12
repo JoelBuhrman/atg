@@ -25,7 +25,8 @@ class App extends React.Component {
     }
   }
 
-  fetchGames = async () => {
+  fetchGames = async e => {
+    e.preventDefault()
     const inputValue = document.getElementById('input').value
     try {
       const value = await getGames(inputValue)

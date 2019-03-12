@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const Container = styled.div`
+const Container = styled.form`
   display: flex;
   flex-direction: row;
 `
@@ -25,7 +25,7 @@ const StyledInput = styled.input`
 `
 
 const Input = ({ fetchGames }) => (
-  <Container>
+  <Container onSubmit={fetchGames}>
     <StyledInput
       id='input'
       autoComplete='off'
