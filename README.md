@@ -1,4 +1,8 @@
-To run the project, first run `npm start` from the main folder, then run `npm start` from the clients folder.
+To run this project, first clone the directory uing `git clone https://github.com/JoelBuhrman/atg.git`.
+Enter the main directory (`cd atg`) and run npm install.
+Enter the client directory (`cd atg/client`) and run npm install.
+
+Now, to actually run the app, first run `npm start` from the main folder, then run `npm start` from the clients folder.
 Open http://localhost:3000 to watch the website
 
 ## Available Scripts
