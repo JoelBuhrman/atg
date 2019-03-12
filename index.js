@@ -1,49 +1,33 @@
 const express = require('express')
 const path = require('path')
-const https = require('https')
+const axios = require('axios')
 
 const app = express()
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 
-app.get('/getGames/:gameType', (req, res) => {
+app.get('/getGames/:gameType', async (req, res) => {
   const { gameType } = req.params
-  https
-    .get(
-      'https://www.atg.se/services/racinginfo/v1/api/products/' + gameType,
-      resp => {
-        let data = ''
-        resp.on('data', chunk => {
-          data += chunk
-        })
-        resp.on('end', () => {
-          res.send(JSON.parse(data))
-        })
-      }
+  try {
+    const { data } = await axios.get(
+      'https://www.atg.se/services/racinginfo/v1/api/products/' + gameType
     )
-    .on('error', err => {
-      console.log('Error: ' + err.message)
-    })
+    res.send(data)
+  } catch (error) {
+    console.error(error)
+  }
 })
 
-app.get('/getGameData/:gameId', (req, res) => {
+app.get('/getGameData/:gameId', async (req, res) => {
   const { gameId } = req.params
-  https
-    .get(
-      'https://www.atg.se/services/racinginfo/v1/api/games/' + gameId,
-      resp => {
-        let data = ''
-        resp.on('data', chunk => {
-          data += chunk
-        })
-        resp.on('end', () => {
-          res.send(JSON.parse(data))
-        })
-      }
+  try {
+    const { data } = await axios.get(
+      'https://www.atg.se/services/racinginfo/v1/api/games/' + gameId
     )
-    .on('error', err => {
-      console.log('Error: ' + err.message)
-    })
+    res.send(data)
+  } catch (error) {
+    console.error(error)
+  }
 })
 
 const port = process.env.PORT || 5000
