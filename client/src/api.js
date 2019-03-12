@@ -14,9 +14,11 @@ const getData = async object => {
   return races
 }
 
-export const getGames = gameType =>
-  ALLOWED_INPUTS.includes(gameType)
-    ? fetch('/getGames/' + gameType)
-        .then(response => response)
-        .then(async data => await getData(data.json()))
-    : null
+export const getGames = gameType => {
+  if (ALLOWED_INPUTS.includes(gameType)) {
+    return fetch('/getGames/' + gameType)
+      .then(response => response)
+      .then(async data => await getData(data.json()))
+  }
+  throw new Error()
+}

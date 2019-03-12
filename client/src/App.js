@@ -11,6 +11,12 @@ const Logo = styled.img`
   width: 100%;
 `
 
+const Error = styled.div`
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+`
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -21,7 +27,13 @@ class App extends React.Component {
 
   fetchGames = async () => {
     const inputValue = document.getElementById('input').value
-    this.setState({ games: await getGames(inputValue), type: inputValue })
+    try {
+      const value = await getGames(inputValue)
+      this.setState({ games: value, type: inputValue, error: null })
+    } catch (Error) {
+      this.setState({ error: 'error', games: null, type: null })
+      setTimeout(() => this.setState({ error: null }), 4000)
+    }
   }
 
   render() {
@@ -34,6 +46,9 @@ class App extends React.Component {
             gameInformation={this.state.games}
             gameType={this.state.type}
           />
+        )}
+        {this.state.error && (
+          <Error>Please search for one of V75, V65, V64, V4</Error>
         )}
       </Container>
     )
