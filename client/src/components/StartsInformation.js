@@ -46,11 +46,8 @@ const Container = styled.div`
 `
 
 export default class StartsInformation extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      expanded: []
-    }
+  state = {
+    expanded: []
   }
 
   isExpanded = number => this.state.expanded.includes(number)
